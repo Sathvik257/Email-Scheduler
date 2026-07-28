@@ -528,11 +528,16 @@ Update `VITE_GOOGLE_CLIENT_ID`.
 5. Add your Google account as a test user while the app is in testing.
 6. Create an OAuth Client:
    - Application type: **Web application**
-   - Authorized JavaScript origin:
+   - Authorized JavaScript origins:
 
 ```text
 http://localhost:5173
+http://127.0.0.1:5173
 ```
+
+Use `http://localhost:5173` when opening the local frontend. Google treats
+`localhost` and `127.0.0.1` as different origins, so both are listed here to
+avoid `Error 400: origin_mismatch` during local testing.
 
 7. Copy the Client ID into:
 

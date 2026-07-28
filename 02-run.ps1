@@ -5,7 +5,7 @@ function Assert-NoPlaceholder($Path) {
     throw "$Path is missing. Run .\\01-setup.ps1 first."
   }
   $content = Get-Content $Path -Raw
-  if ($content -match "replace-with|your-google|\\\"user\\\":\\\"replace\\\"") {
+if ($Content -match 'replace-with|your-google|"user":"replace"') {
     throw "$Path still contains placeholder credentials. Complete the environment setup first."
   }
 }

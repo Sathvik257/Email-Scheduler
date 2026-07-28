@@ -1,13 +1,15 @@
 import { prisma } from "./db/prisma.js";
 import { startEmailWorker } from "./queue/email.worker.js";
+import { reconcileScheduledJobs } from "./services/scheduler.service.js";
 import { syncConfiguredSenders } from "./services/sender.service.js";
 
 async function bootstrap() {
   await prisma.$connect();
   await syncConfiguredSenders();
+  const restoredJobs = await reconcileScheduledJobs();
 
   const worker = startEmailWorker();
-  console.log("[worker] started");
+  console.log(`[worker] started; restored ${restoredJobs} scheduled job(s)`);
 
   const shutdown = async (signal: string) => {
     console.log(`[worker] ${signal}; shutting down`);
