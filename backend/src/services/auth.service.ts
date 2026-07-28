@@ -7,10 +7,16 @@ import { HttpError } from "../utils/http-error.js";
 const googleClient = new OAuth2Client(env.GOOGLE_CLIENT_ID);
 
 export async function loginWithGoogle(credential: string) {
-  const ticket = await googleClient.verifyIdToken({
-    idToken: credential,
-    audience: env.GOOGLE_CLIENT_ID,
-  });
+  let ticket;
+  try {
+    ticket = await googleClient.verifyIdToken({
+      idToken: credential,
+      audience: env.GOOGLE_CLIENT_ID,
+    });
+  } catch (error) {
+    console.error("Google token verification failed:", error);
+    throw new HttpError(401, "Google login could not be verified. Check the backend GOOGLE_CLIENT_ID.");
+  }
 
   const payload = ticket.getPayload();
   if (!payload?.sub || !payload.email || !payload.name || !payload.email_verified) {
