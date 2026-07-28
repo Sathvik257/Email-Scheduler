@@ -212,35 +212,24 @@ export function LoginPage({
               </div>
 
               <div
-                aria-label="Sign in with Google"
-                className={`group relative min-h-14 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-lg hover:shadow-teal-900/10 ${
+                className={`flex min-h-14 items-center justify-center rounded-lg border border-slate-200 bg-white p-2 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-lg hover:shadow-teal-900/10 ${
                   signingIn ? "pointer-events-none opacity-50" : ""
                 }`}
               >
-                <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center gap-3 px-4 text-sm font-black text-slate-800 transition group-hover:text-teal-800">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white font-black shadow-sm">
-                    <span className="text-[#4285f4]">G</span>
-                  </span>
-                  <span>Sign in with Google</span>
-                  <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-1 group-hover:text-teal-700" />
-                </div>
-
-                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0">
-                  <GoogleLogin
-                    width="360"
-                    shape="rectangular"
-                    size="large"
-                    text="signin_with"
-                    theme="outline"
-                    onSuccess={(response) => {
-                      void handleGoogleSuccess(response);
-                    }}
-                    onError={() => {
-                      setSigningIn(false);
-                      onError("Google login failed. Please try again.");
-                    }}
-                  />
-                </div>
+                <GoogleLogin
+                  width="300"
+                  shape="rectangular"
+                  size="large"
+                  text="signin_with"
+                  theme="outline"
+                  onSuccess={(response) => {
+                    void handleGoogleSuccess(response);
+                  }}
+                  onError={() => {
+                    setSigningIn(false);
+                    onError("Google login failed. Please try again.");
+                  }}
+                />
               </div>
 
               {signingIn && (
