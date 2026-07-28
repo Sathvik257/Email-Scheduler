@@ -7,11 +7,27 @@ import { apiRouter } from "./routes/index.js";
 
 export const app = express();
 
+const allowedOrigins = new Set(
+  [
+    env.FRONTEND_URL,
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "https://reachinbox-frontend.onrender.com",
+  ].map((origin) => origin.replace(/\/$/, "")),
+);
+
 app.disable("x-powered-by");
 app.use(helmet());
 app.use(
   cors({
-    origin: env.FRONTEND_URL,
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.has(origin.replace(/\/$/, ""))) {
+        callback(null, true);
+        return;
+      }
+
+      callback(null, false);
+    },
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "Idempotency-Key"],
   }),
