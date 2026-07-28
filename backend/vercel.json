@@ -1,11 +1,7 @@
 {
   "services": {
-    "frontend": {
-      "root": "frontend/",
-      "framework": "vite"
-    },
     "backend": {
-      "root": "backend/",
+      "root": "./",
       "framework": "express"
     }
   },
@@ -19,7 +15,7 @@
     {
       "source": "/(.*)",
       "destination": {
-        "service": "frontend"
+        "service": "backend"
       }
     }
   ]
