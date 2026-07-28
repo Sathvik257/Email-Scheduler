@@ -1,0 +1,21 @@
+{
+  "name": "reachinbox-email-scheduler",
+  "private": true,
+  "workspaces": ["backend", "frontend"],
+  "scripts": {
+    "install:all": "npm install --workspaces",
+    "dev": "concurrently -n API,WORKER,WEB -c auto \"npm run dev --workspace backend\" \"npm run worker:dev --workspace backend\" \"npm run dev --workspace frontend\"",
+    "build": "npm run build --workspace backend && npm run build --workspace frontend",
+    "infra:up": "docker compose up -d postgres redis",
+    "infra:down": "docker compose down",
+    "db:migrate": "npm run db:migrate --workspace backend",
+    "db:studio": "npm run db:studio --workspace backend",
+    "ethereal:create": "npm run ethereal:create --workspace backend"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

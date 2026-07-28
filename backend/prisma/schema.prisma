@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum EmailStatus {
+  SCHEDULED
+  PROCESSING
+  SENT
+  FAILED
+}
+
+model User {
+  id          String       @id @default(uuid())
+  googleSub   String       @unique
+  email       String       @unique
+  name        String
+  avatarUrl   String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  batches     EmailBatch[]
+  emails      ScheduledEmail[]
+
+  @@index([createdAt])
+}
+
+model Sender {
+  id          String       @id @default(uuid())
+  key         String       @unique
+  name        String
+  email       String
+  active      Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  batches     EmailBatch[]
+  emails      ScheduledEmail[]
+}
+
+model EmailBatch {
+  id                     String           @id
+  userId                 String
+  senderId               String
+  idempotencyKey         String
+  subject                String
+  body                   String           @db.Text
+  startTime              DateTime
+  requestedDelayMs       Int
+  effectiveDelayMs       Int
+  requestedHourlyLimit   Int
+  effectiveHourlyLimit   Int
+  recipientCount         Int
+  createdAt              DateTime         @default(now())
+  user                   User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sender                 Sender           @relation(fields: [senderId], references: [id])
+  emails                 ScheduledEmail[]
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, createdAt])
+}
+
+model ScheduledEmail {
+  id                  String       @id
+  batchId             String
+  userId              String
+  senderId            String
+  recipient           String
+  scheduledAt         DateTime
+  status              EmailStatus  @default(SCHEDULED)
+  bullJobId           String       @unique
+  attemptCount        Int          @default(0)
+  processingStartedAt DateTime?
+  sentAt              DateTime?
+  failedAt            DateTime?
+  providerMessageId   String?
+  previewUrl          String?
+  lastError           String?      @db.Text
+  createdAt           DateTime     @default(now())
+  updatedAt           DateTime     @updatedAt
+  batch               EmailBatch   @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  user                User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  sender              Sender       @relation(fields: [senderId], references: [id])
+
+  @@index([userId, status, scheduledAt])
+  @@index([status, scheduledAt])
+  @@index([batchId, scheduledAt])
+}
