@@ -85,7 +85,7 @@ export function EmailTable({
               setSearch(event.target.value)
             }
             placeholder="Search recipient, subject, or sender"
-            className="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10"
+            className="w-full rounded-lg border border-slate-200 bg-white py-2.5 pl-10 pr-4 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-4 focus:ring-teal-500/10"
           />
         </div>
 
@@ -95,7 +95,7 @@ export function EmailTable({
             onChange={(event) =>
               setStatusFilter(event.target.value)
             }
-            className="min-w-36 rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-700 outline-none transition hover:border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10"
+            className="min-w-36 rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm font-medium text-slate-700 outline-none transition hover:border-slate-300 focus:border-teal-600 focus:ring-4 focus:ring-teal-500/10"
           >
             <option value="all">All statuses</option>
 
@@ -113,7 +113,7 @@ export function EmailTable({
       </div>
 
       {filteredRows.length === 0 ? (
-        <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
+        <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 px-6 py-12 text-center">
           <Search className="mx-auto h-8 w-8 text-slate-300" />
 
           <h3 className="mt-3 font-bold text-slate-800">
@@ -130,14 +130,14 @@ export function EmailTable({
               setSearch("");
               setStatusFilter("all");
             }}
-            className="mt-4 text-sm font-bold text-indigo-600 hover:text-indigo-700"
+            className="mt-4 text-sm font-bold text-teal-700 hover:text-teal-800"
           >
             Clear filters
           </button>
         </div>
       ) : (
         <>
-          <div className="hidden overflow-hidden rounded-2xl border border-slate-200 bg-white lg:block">
+          <div className="hidden overflow-hidden rounded-lg border border-slate-200 bg-white lg:block">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-slate-200">
                 <thead className="bg-slate-50/80">
@@ -195,10 +195,10 @@ function DesktopEmailRow({
   const timestamp = getTimestamp(row, mode);
 
   return (
-    <tr className="transition hover:bg-slate-50/70">
+    <tr className="transition hover:bg-teal-50/30">
       <td className="px-5 py-4">
         <div className="flex items-center gap-3">
-          <div className="rounded-xl bg-indigo-50 p-2 text-indigo-600">
+          <div className="rounded-lg bg-teal-50 p-2 text-teal-700">
             <Mail className="h-4 w-4" />
           </div>
 
@@ -280,7 +280,7 @@ function DesktopEmailRow({
             href={row.previewUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50 px-3 py-2 text-xs font-bold text-indigo-600 transition hover:border-indigo-200 hover:bg-indigo-100"
+            className="inline-flex items-center gap-2 rounded-lg border border-teal-100 bg-teal-50 px-3 py-2 text-xs font-bold text-teal-700 transition hover:border-teal-200 hover:bg-teal-100"
           >
             Preview
             <ExternalLink className="h-3.5 w-3.5" />
@@ -305,7 +305,7 @@ function MobileEmailCard({
   const timestamp = getTimestamp(row, mode);
 
   return (
-    <article className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+    <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm shadow-slate-900/5 transition hover:-translate-y-0.5 hover:shadow-md">
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p
@@ -347,7 +347,7 @@ function MobileEmailCard({
       </div>
 
       {row.lastError && (
-        <div className="mt-4 flex items-start gap-2 rounded-xl border border-rose-100 bg-rose-50 p-3 text-xs text-rose-700">
+        <div className="mt-4 flex items-start gap-2 rounded-lg border border-rose-100 bg-rose-50 p-3 text-xs text-rose-700">
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <span>{row.lastError}</span>
         </div>
@@ -358,7 +358,7 @@ function MobileEmailCard({
           href={row.previewUrl}
           target="_blank"
           rel="noreferrer"
-          className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl border border-indigo-100 bg-indigo-50 px-4 py-2.5 text-sm font-bold text-indigo-600 transition hover:bg-indigo-100"
+          className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-teal-100 bg-teal-50 px-4 py-2.5 text-sm font-bold text-teal-700 transition hover:bg-teal-100"
         >
           Open Ethereal Preview
           <ExternalLink className="h-4 w-4" />
@@ -426,11 +426,11 @@ function EmailTableSkeleton() {
   return (
     <div className="space-y-4">
       <div className="flex animate-pulse flex-col gap-3 sm:flex-row sm:justify-between">
-        <div className="h-11 w-full rounded-xl bg-slate-100 sm:max-w-sm" />
-        <div className="h-11 w-36 rounded-xl bg-slate-100" />
+        <div className="shimmer h-11 w-full rounded-lg bg-slate-100 sm:max-w-sm" />
+        <div className="shimmer h-11 w-36 rounded-lg bg-slate-100" />
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+      <div className="overflow-hidden rounded-lg border border-slate-200 bg-white">
         <div className="h-12 animate-pulse bg-slate-50" />
 
         {[1, 2, 3, 4].map((item) => (
@@ -438,10 +438,10 @@ function EmailTableSkeleton() {
             key={item}
             className="flex animate-pulse gap-5 border-t border-slate-100 px-5 py-5"
           >
-            <div className="h-10 w-10 rounded-xl bg-slate-100" />
-            <div className="h-10 flex-1 rounded-lg bg-slate-100" />
-            <div className="hidden h-10 flex-1 rounded-lg bg-slate-100 sm:block" />
-            <div className="hidden h-10 w-32 rounded-lg bg-slate-100 lg:block" />
+            <div className="shimmer h-10 w-10 rounded-lg bg-slate-100" />
+            <div className="shimmer h-10 flex-1 rounded-lg bg-slate-100" />
+            <div className="shimmer hidden h-10 flex-1 rounded-lg bg-slate-100 sm:block" />
+            <div className="shimmer hidden h-10 w-32 rounded-lg bg-slate-100 lg:block" />
           </div>
         ))}
       </div>
@@ -457,8 +457,8 @@ function EmptyEmailState({
   const scheduledMode = mode === "scheduled";
 
   return (
-    <div className="rounded-2xl border border-dashed border-slate-300 bg-slate-50/70 px-6 py-14 text-center">
-      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-indigo-500 shadow-sm">
+    <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50/70 px-6 py-14 text-center">
+      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-lg bg-white text-teal-700 shadow-sm">
         {scheduledMode ? (
           <Inbox className="h-7 w-7" />
         ) : (

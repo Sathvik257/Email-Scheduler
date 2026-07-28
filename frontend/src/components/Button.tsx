@@ -13,14 +13,17 @@ export function Button({
   ...props
 }: Props) {
   const variants = {
-    primary: "bg-[#5b5cf0] text-white hover:bg-[#4b4cdd]",
-    secondary: "border border-slate-200 bg-white text-slate-700 hover:bg-slate-50",
-    danger: "bg-rose-50 text-rose-700 hover:bg-rose-100",
+    primary:
+      "border border-[#0f766e] bg-[#0f766e] text-white shadow-teal-900/15 hover:-translate-y-0.5 hover:bg-[#115e59] hover:shadow-lg hover:shadow-teal-900/20",
+    secondary:
+      "border border-slate-200 bg-white/90 text-slate-700 hover:-translate-y-0.5 hover:border-teal-200 hover:bg-teal-50 hover:text-teal-800",
+    danger:
+      "border border-rose-100 bg-rose-50 text-rose-700 hover:-translate-y-0.5 hover:bg-rose-100",
   };
 
   return (
     <button
-      className={`inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold shadow-sm transition disabled:cursor-not-allowed disabled:opacity-50 ${variants[variant]} ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold shadow-sm transition duration-200 active:translate-y-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal-500/20 disabled:translate-y-0 disabled:cursor-not-allowed disabled:opacity-50 ${variants[variant]} ${className}`}
       {...props}
     >
       {children}

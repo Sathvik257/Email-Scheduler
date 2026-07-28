@@ -1,14 +1,17 @@
 import {
   Activity,
+  ArrowRight,
   CheckCircle2,
+  Clock3,
   Database,
-  Gauge,
   Loader2,
   LockKeyhole,
   Mail,
+  MailCheck,
+  Send,
   ShieldCheck,
   Sparkles,
-  TimerReset,
+  UsersRound,
   Zap,
 } from "lucide-react";
 import { GoogleLogin, type CredentialResponse } from "@react-oauth/google";
@@ -51,190 +54,230 @@ export function LoginPage({
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 lg:grid lg:grid-cols-[0.92fr_1.08fr]">
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-white px-5 py-10 sm:px-8 lg:px-12">
-        <div className="absolute -left-28 -top-28 h-72 w-72 rounded-full bg-indigo-100/60 blur-3xl" />
-        <div className="absolute -bottom-32 right-0 h-80 w-80 rounded-full bg-violet-100/60 blur-3xl" />
+    <main className="relative min-h-screen overflow-hidden px-4 py-6 text-slate-950 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,118,110,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(15,118,110,0.07)_1px,transparent_1px)] bg-[size:44px_44px]" />
 
-        <div className="relative w-full max-w-lg">
+      <div className="relative mx-auto flex min-h-[calc(100vh-3rem)] max-w-6xl flex-col">
+        <header className="flex items-center justify-between gap-4 py-2">
           <div className="flex items-center gap-3">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-xl shadow-indigo-200">
+            <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-[#0f766e] text-white shadow-xl shadow-teal-900/20">
               <Mail className="h-5 w-5" />
-
-              <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-400" />
             </div>
 
             <div>
-              <h1 className="text-xl font-bold tracking-tight text-slate-950">
+              <p className="text-lg font-black text-[#10201f]">
                 ReachInbox
-              </h1>
-
-              <p className="text-xs font-medium text-slate-500">
-                Full-Stack Email Scheduler
+              </p>
+              <p className="text-xs font-semibold text-slate-500">
+                Email Job Scheduler
               </p>
             </div>
           </div>
 
-          <div className="mt-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-indigo-100 bg-indigo-50 px-3 py-1.5 text-xs font-bold text-indigo-600">
-              <Sparkles className="h-3.5 w-3.5" />
-              Production-oriented scheduling
-            </div>
-
-            <h2 className="mt-5 text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl sm:leading-[1.08]">
-              Reliable email scheduling,
-              <span className="block bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-                built for scale.
-              </span>
-            </h2>
-
-            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
-              Sign in with Google to schedule persistent email jobs,
-              monitor BullMQ processing, manage senders, and preview
-              messages delivered through Ethereal SMTP.
-            </p>
+          <div className="hidden items-center gap-2 rounded-full border border-teal-100 bg-white px-3 py-1.5 text-xs font-bold text-teal-700 shadow-sm sm:flex">
+            <Zap className="h-3.5 w-3.5 text-orange-400" />
+            BullMQ powered
           </div>
+        </header>
 
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
-            <div className="flex items-start gap-3">
-              <div className="rounded-xl bg-white p-2.5 text-indigo-600 shadow-sm">
-                <LockKeyhole className="h-5 w-5" />
-              </div>
+        <section className="grid flex-1 items-center gap-5 py-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="hidden overflow-hidden rounded-lg bg-[#082521] text-white shadow-2xl shadow-slate-900/20 md:block">
+            <div className="relative min-h-[620px] p-7 lg:p-9">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_10%,rgba(45,212,191,0.28),transparent_24rem),radial-gradient(circle_at_90%_0%,rgba(249,115,22,0.22),transparent_22rem)]" />
+              <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(#ffffff_1px,transparent_1px),linear-gradient(90deg,#ffffff_1px,transparent_1px)] [background-size:42px_42px]" />
 
-              <div>
-                <h3 className="text-sm font-bold text-slate-900">
-                  Secure Google authentication
-                </h3>
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-bold text-teal-50 backdrop-blur">
+                  <Sparkles className="h-3.5 w-3.5 text-orange-300" />
+                  Cold outreach scheduler
+                </div>
 
-                <p className="mt-1 text-xs leading-5 text-slate-500">
-                  The backend verifies Google&apos;s signed ID token
-                  before creating your local JWT session.
+                <h1 className="mt-6 max-w-2xl text-4xl font-black leading-[1.05] lg:text-5xl">
+                  Schedule every email with calm precision.
+                </h1>
+
+                <p className="mt-5 max-w-xl text-sm leading-6 text-teal-50/78 sm:text-base">
+                  Upload leads, choose a sender, set a delivery window, and
+                  let the queue protect every campaign from duplicates and
+                  throttling.
                 </p>
               </div>
+
+              <div className="relative mt-8 grid gap-3 lg:grid-cols-3">
+                <FeaturePill
+                  icon={<Clock3 className="h-4 w-4" />}
+                  title="Delayed jobs"
+                  text="Persistent scheduling"
+                />
+                <FeaturePill
+                  icon={<ShieldCheck className="h-4 w-4" />}
+                  title="Idempotent"
+                  text="No duplicate sends"
+                />
+                <FeaturePill
+                  icon={<Activity className="h-4 w-4" />}
+                  title="Rate aware"
+                  text="Hourly limits"
+                />
+              </div>
+
+              <div className="relative mt-7 rounded-lg border border-white/15 bg-white/[0.08] p-5 backdrop-blur">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-orange-400 text-[#10201f] shadow-lg shadow-orange-950/20">
+                      <Send className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-black">Launch sequence</p>
+                      <p className="text-xs text-teal-100/62">
+                        Ready for worker pickup
+                      </p>
+                    </div>
+                  </div>
+
+                  <span className="rounded-full bg-teal-300/15 px-3 py-1 text-xs font-bold text-teal-100">
+                    Live
+                  </span>
+                </div>
+
+                <div className="mt-5 rounded-lg bg-[#061b18] p-4">
+                  <p className="text-xs font-bold text-teal-100/60">
+                    Campaign prompt
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-white">
+                    Schedule 420 leads from `sample-leads.csv` with a
+                    2-second delay and 200/hour cap.
+                  </p>
+                </div>
+
+                <div className="mt-5 space-y-3">
+                  <SignalRow
+                    icon={<UsersRound className="h-4 w-4" />}
+                    label="Leads parsed"
+                    value="420"
+                    accent="bg-teal-300"
+                  />
+                  <SignalRow
+                    icon={<Database className="h-4 w-4" />}
+                    label="Rows persisted"
+                    value="Postgres"
+                    accent="bg-orange-300"
+                  />
+                  <SignalRow
+                    icon={<MailCheck className="h-4 w-4" />}
+                    label="SMTP preview"
+                    value="Ethereal"
+                    accent="bg-sky-300"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside className="animate-fade-up rounded-lg border border-slate-200 bg-white p-5 text-slate-950 shadow-2xl shadow-slate-900/10 sm:p-7">
+            <div className="flex items-center justify-between gap-4">
+              <div>
+                <p className="text-xs font-black uppercase text-teal-700">
+                  Welcome back
+                </p>
+                <h2 className="mt-2 text-3xl font-black leading-tight sm:text-4xl">
+                  Sign in to continue
+                </h2>
+              </div>
+
+              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-[#0f766e] text-white shadow-lg shadow-teal-900/20">
+                <LockKeyhole className="h-5 w-5" />
+              </div>
             </div>
 
-            <div
-              className={`mt-5 flex min-h-12 items-center justify-center rounded-2xl border border-slate-200 bg-white p-3 transition ${
-                signingIn
-                  ? "pointer-events-none opacity-50"
-                  : ""
-              }`}
-            >
-              <GoogleLogin
-                width="320"
-                shape="rectangular"
-                size="large"
-                text="signin_with"
-                theme="outline"
-                onSuccess={(response) => {
-                  void handleGoogleSuccess(response);
-                }}
-                onError={() => {
-                  setSigningIn(false);
-                  onError("Google login failed. Please try again.");
-                }}
+            <p className="mt-4 text-sm leading-6 text-slate-600">
+              Use your Google account to open the dashboard, compose campaigns,
+              and monitor scheduled or sent emails.
+            </p>
+
+            <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
+              <div className="mb-4 flex items-start gap-3">
+                <span className="rounded-lg bg-teal-50 p-2 text-teal-700">
+                  <ShieldCheck className="h-4 w-4" />
+                </span>
+                <div>
+                  <p className="text-sm font-black">
+                    Google verified session
+                  </p>
+                  <p className="mt-1 text-xs leading-5 text-slate-500">
+                    The backend verifies the signed ID token before issuing
+                    your app session.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                aria-label="Sign in with Google"
+                className={`group relative min-h-14 overflow-hidden rounded-lg border border-slate-200 bg-white shadow-sm transition duration-200 hover:-translate-y-0.5 hover:border-teal-200 hover:shadow-lg hover:shadow-teal-900/10 ${
+                  signingIn ? "pointer-events-none opacity-50" : ""
+                }`}
+              >
+                <div className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center gap-3 px-4 text-sm font-black text-slate-800 transition group-hover:text-teal-800">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-200 bg-white font-black shadow-sm">
+                    <span className="text-[#4285f4]">G</span>
+                  </span>
+                  <span>Sign in with Google</span>
+                  <ArrowRight className="h-4 w-4 text-slate-400 transition group-hover:translate-x-1 group-hover:text-teal-700" />
+                </div>
+
+                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0">
+                  <GoogleLogin
+                    width="360"
+                    shape="rectangular"
+                    size="large"
+                    text="signin_with"
+                    theme="outline"
+                    onSuccess={(response) => {
+                      void handleGoogleSuccess(response);
+                    }}
+                    onError={() => {
+                      setSigningIn(false);
+                      onError("Google login failed. Please try again.");
+                    }}
+                  />
+                </div>
+              </div>
+
+              {signingIn && (
+                <div className="mt-4 flex items-center justify-center gap-2 rounded-lg bg-teal-50 px-4 py-3 text-sm font-semibold text-teal-800">
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                  Verifying your Google account...
+                </div>
+              )}
+            </div>
+
+            <div className="mt-5 space-y-3">
+              <TrustLine
+                icon={<CheckCircle2 className="h-4 w-4" />}
+                text="Persistent jobs survive restarts"
+              />
+              <TrustLine
+                icon={<CheckCircle2 className="h-4 w-4" />}
+                text="Redis counters protect hourly limits"
+              />
+              <TrustLine
+                icon={<CheckCircle2 className="h-4 w-4" />}
+                text="Ethereal previews keep testing safe"
               />
             </div>
 
-            {signingIn && (
-              <div className="mt-4 flex items-center justify-center gap-2 rounded-xl bg-indigo-50 px-4 py-3 text-sm font-semibold text-indigo-700">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Verifying your Google account...
-              </div>
-            )}
-          </div>
-
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <TrustItem
-              icon={<ShieldCheck className="h-4 w-4" />}
-              text="Verified login"
-            />
-
-            <TrustItem
-              icon={<Database className="h-4 w-4" />}
-              text="Persistent data"
-            />
-
-            <TrustItem
-              icon={<Activity className="h-4 w-4" />}
-              text="Live monitoring"
-            />
-          </div>
-
-          <p className="mt-8 text-center text-xs text-slate-400 sm:text-left">
-            Built with React, Express, PostgreSQL, Redis, BullMQ,
-            Prisma, and TypeScript.
-          </p>
-        </div>
-      </section>
-
-      <section className="relative hidden min-h-screen overflow-hidden bg-[#0f1325] px-12 py-14 text-white lg:flex lg:items-center">
-        <div className="absolute -right-28 -top-24 h-96 w-96 rounded-full bg-indigo-500/20 blur-3xl" />
-        <div className="absolute -bottom-32 left-16 h-96 w-96 rounded-full bg-violet-500/20 blur-3xl" />
-        <div className="absolute right-12 top-12 h-44 w-44 rounded-full border border-white/5" />
-        <div className="absolute bottom-16 right-28 h-24 w-24 rounded-full border border-white/5" />
-
-        <div className="relative mx-auto w-full max-w-xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1.5 text-xs font-semibold text-indigo-200 backdrop-blur">
-            <Zap className="h-3.5 w-3.5" />
-            Production-oriented architecture
-          </div>
-
-          <h2 className="mt-7 text-4xl font-bold leading-tight xl:text-5xl">
-            PostgreSQL, Redis,
-            <span className="block text-indigo-300">
-              BullMQ and TypeScript
-            </span>
-          </h2>
-
-          <p className="mt-5 max-w-lg text-base leading-7 text-slate-300">
-            A reliable scheduling pipeline designed to preserve jobs,
-            prevent duplicate sends, and control delivery throughput.
-          </p>
-
-          <div className="mt-10 space-y-4">
-            <Feature
-              icon={<TimerReset className="h-5 w-5" />}
-              title="Persistent delayed jobs"
-              text="Future campaigns survive API and worker restarts without starting over."
-            />
-
-            <Feature
-              icon={<ShieldCheck className="h-5 w-5" />}
-              title="Idempotent processing"
-              text="Unique request keys, queue job IDs, and database state suppress duplicates."
-            />
-
-            <Feature
-              icon={<Gauge className="h-5 w-5" />}
-              title="Distributed rate limiting"
-              text="Redis-backed counters and BullMQ controls safely throttle concurrent workers."
-            />
-
-            <Feature
-              icon={<Mail className="h-5 w-5" />}
-              title="Safe SMTP previews"
-              text="Every successful Ethereal delivery exposes a browser preview for testing."
-            />
-          </div>
-
-          <div className="mt-10 grid grid-cols-3 gap-3">
-            <ArchitectureStat value="5" label="Worker concurrency" />
-            <ArchitectureStat value="2s" label="Minimum delay" />
-            <ArchitectureStat value="200" label="Emails per hour" />
-          </div>
-
-          <div className="mt-8 flex items-center gap-2 text-xs font-semibold text-emerald-300">
-            <CheckCircle2 className="h-4 w-4" />
-            No cron jobs — scheduling is handled through BullMQ.
-          </div>
-        </div>
-      </section>
+            <div className="mt-6 flex items-center justify-between rounded-lg border border-teal-100 bg-teal-50 px-4 py-3 text-sm font-bold text-teal-800 transition hover:border-teal-200 hover:bg-teal-100">
+              <span>Open your scheduler</span>
+              <ArrowRight className="h-4 w-4" />
+            </div>
+          </aside>
+        </section>
+      </div>
     </main>
   );
 }
 
-function Feature({
+function FeaturePill({
   icon,
   title,
   text,
@@ -244,23 +287,50 @@ function Feature({
   text: string;
 }) {
   return (
-    <div className="group flex gap-4 rounded-2xl border border-white/5 bg-white/[0.04] p-4 transition hover:border-indigo-400/20 hover:bg-white/[0.07]">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-indigo-400/10 text-indigo-300">
+    <div className="rounded-lg border border-white/15 bg-white/[0.08] p-4 transition hover:-translate-y-1 hover:bg-white/[0.12]">
+      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-300/10 text-teal-100">
         {icon}
       </div>
+      <p className="mt-3 text-sm font-black text-white">{title}</p>
+      <p className="mt-1 text-xs font-semibold text-teal-100/55">
+        {text}
+      </p>
+    </div>
+  );
+}
 
-      <div>
-        <h3 className="font-bold text-white">{title}</h3>
+function SignalRow({
+  icon,
+  label,
+  value,
+  accent,
+}: {
+  icon: ReactNode;
+  label: string;
+  value: string;
+  accent: string;
+}) {
+  return (
+    <div className="flex items-center justify-between gap-3 rounded-lg border border-white/10 bg-white/[0.04] p-3 transition hover:bg-white/[0.08]">
+      <div className="flex min-w-0 items-center gap-3">
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 text-teal-100">
+          {icon}
+        </span>
+        <div className="min-w-0">
+          <p className="truncate text-sm font-bold text-white">{label}</p>
+          <p className="text-xs text-teal-100/55">Ready</p>
+        </div>
+      </div>
 
-        <p className="mt-1 text-sm leading-6 text-slate-400">
-          {text}
-        </p>
+      <div className="flex items-center gap-2">
+        <span className={`h-2 w-2 rounded-full ${accent}`} />
+        <span className="text-xs font-black text-teal-50">{value}</span>
       </div>
     </div>
   );
 }
 
-function TrustItem({
+function TrustLine({
   icon,
   text,
 }: {
@@ -268,27 +338,9 @@ function TrustItem({
   text: string;
 }) {
   return (
-    <div className="flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-xs font-semibold text-slate-600 shadow-sm sm:justify-start">
-      <span className="text-indigo-500">{icon}</span>
+    <div className="flex items-center gap-2 text-sm font-semibold text-slate-600">
+      <span className="text-teal-700">{icon}</span>
       {text}
-    </div>
-  );
-}
-
-function ArchitectureStat({
-  value,
-  label,
-}: {
-  value: string;
-  label: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.06] p-4 backdrop-blur">
-      <p className="text-2xl font-bold text-white">{value}</p>
-
-      <p className="mt-1 text-xs leading-5 text-slate-400">
-        {label}
-      </p>
     </div>
   );
 }

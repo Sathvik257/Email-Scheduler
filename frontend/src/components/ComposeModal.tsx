@@ -219,29 +219,29 @@ export function ComposeModal({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/55 p-3 backdrop-blur-sm sm:p-5"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/60 p-3 backdrop-blur-md sm:p-5"
       role="presentation"
     >
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="compose-email-title"
-        className="flex max-h-[94vh] w-full max-w-4xl flex-col overflow-hidden rounded-3xl border border-white/20 bg-white shadow-2xl shadow-slate-950/30"
+        className="animate-fade-up flex max-h-[94vh] w-full max-w-4xl flex-col overflow-hidden rounded-lg border border-white/20 bg-white shadow-2xl shadow-slate-950/30"
       >
         <header className="flex shrink-0 items-start justify-between gap-4 border-b border-slate-200 bg-white px-5 py-5 sm:px-7">
           <div className="flex items-start gap-4">
-            <div className="rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 p-3 text-white shadow-lg shadow-indigo-200">
+            <div className="rounded-lg bg-[#0f766e] p-3 text-white shadow-lg shadow-teal-900/20">
               <Send className="h-5 w-5" />
             </div>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-indigo-500">
+              <p className="text-xs font-bold uppercase tracking-[0.18em] text-teal-700">
                 New campaign
               </p>
 
               <h2
                 id="compose-email-title"
-                className="mt-1 text-xl font-bold text-slate-950 sm:text-2xl"
+                className="mt-1 text-xl font-black text-slate-950 sm:text-2xl"
               >
                 Compose New Email
               </h2>
@@ -256,7 +256,7 @@ export function ComposeModal({
             type="button"
             onClick={onClose}
             disabled={submitting}
-            className="rounded-xl p-2.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg p-2.5 text-slate-400 transition hover:bg-slate-100 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Close compose dialog"
           >
             <X className="h-5 w-5" />
@@ -333,10 +333,10 @@ export function ComposeModal({
               title="Recipients"
               description="Upload a CSV or text file containing lead email addresses."
             >
-              <label className="group block cursor-pointer rounded-2xl border-2 border-dashed border-slate-300 bg-white p-5 transition hover:border-indigo-400 hover:bg-indigo-50/40">
+              <label className="group block cursor-pointer rounded-lg border-2 border-dashed border-slate-300 bg-white p-5 transition hover:border-teal-500 hover:bg-teal-50/50">
                 <div className="flex flex-col items-center justify-center gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
                   <div className="flex flex-col items-center gap-3 sm:flex-row">
-                    <div className="rounded-2xl bg-indigo-50 p-3 text-indigo-600 transition group-hover:bg-indigo-100">
+                    <div className="rounded-lg bg-teal-50 p-3 text-teal-700 transition group-hover:bg-teal-100">
                       {fileLoading ? (
                         <Loader2 className="h-6 w-6 animate-spin" />
                       ) : (
@@ -357,7 +357,7 @@ export function ComposeModal({
                     </div>
                   </div>
 
-                  <span className="rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm transition group-hover:border-indigo-200 group-hover:text-indigo-600">
+                  <span className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-sm transition group-hover:border-teal-200 group-hover:text-teal-700">
                     Browse files
                   </span>
                 </div>
@@ -374,18 +374,18 @@ export function ComposeModal({
               </label>
 
               <div
-                className={`mt-4 rounded-2xl border p-4 ${
+                className={`mt-4 rounded-lg border p-4 ${
                   recipients.length > 0
-                    ? "border-emerald-200 bg-emerald-50"
+                    ? "border-teal-200 bg-teal-50"
                     : "border-slate-200 bg-white"
                 }`}
               >
                 <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`rounded-xl p-2 ${
+                      className={`rounded-lg p-2 ${
                         recipients.length > 0
-                          ? "bg-emerald-100 text-emerald-700"
+                          ? "bg-teal-100 text-teal-700"
                           : "bg-slate-100 text-slate-500"
                       }`}
                     >
@@ -400,7 +400,7 @@ export function ComposeModal({
                       <p
                         className={`text-sm font-bold ${
                           recipients.length > 0
-                            ? "text-emerald-900"
+                            ? "text-teal-900"
                             : "text-slate-700"
                         }`}
                       >
@@ -420,7 +420,7 @@ export function ComposeModal({
                       type="button"
                       onClick={clearFile}
                       disabled={submitting}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl px-3 py-2 text-xs font-bold text-rose-600 transition hover:bg-rose-50 disabled:opacity-50"
+                      className="inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-bold text-rose-600 transition hover:bg-rose-50 disabled:opacity-50"
                     >
                       <Trash2 className="h-4 w-4" />
                       Remove file
@@ -433,14 +433,14 @@ export function ComposeModal({
                     {recipients.slice(0, 5).map((recipient) => (
                       <span
                         key={recipient}
-                        className="max-w-full truncate rounded-full border border-emerald-200 bg-white px-3 py-1 text-xs font-medium text-emerald-800"
+                        className="max-w-full truncate rounded-full border border-teal-200 bg-white px-3 py-1 text-xs font-medium text-teal-800"
                       >
                         {recipient}
                       </span>
                     ))}
 
                     {recipients.length > 5 && (
-                      <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-700">
+                      <span className="rounded-full bg-teal-100 px-3 py-1 text-xs font-bold text-teal-700">
                         +{recipients.length - 5} more
                       </span>
                     )}
@@ -526,7 +526,7 @@ export function ComposeModal({
                 </Field>
               </div>
 
-              <div className="mt-5 grid gap-3 rounded-2xl border border-indigo-100 bg-indigo-50/70 p-4 sm:grid-cols-3">
+              <div className="mt-5 grid gap-3 rounded-lg border border-teal-100 bg-teal-50/80 p-4 sm:grid-cols-3">
                 <SummaryItem
                   label="Recipients"
                   value={String(recipients.length)}
@@ -545,7 +545,7 @@ export function ComposeModal({
             </FormSection>
 
             {error && (
-              <div className="flex items-start gap-3 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+              <div className="flex items-start gap-3 rounded-lg border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
                 <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" />
 
                 <div>
@@ -614,14 +614,14 @@ function FormSection({
   children: ReactNode;
 }) {
   return (
-    <section className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+    <section className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm shadow-slate-900/5 sm:p-6">
       <div className="mb-5 flex items-start gap-3">
-        <div className="rounded-xl bg-indigo-50 p-2.5 text-indigo-600">
+        <div className="rounded-lg bg-teal-50 p-2.5 text-teal-700">
           {icon}
         </div>
 
         <div>
-          <h3 className="font-bold text-slate-950">{title}</h3>
+          <h3 className="font-black text-slate-950">{title}</h3>
           <p className="mt-1 text-xs leading-5 text-slate-500">
             {description}
           </p>
@@ -670,10 +670,10 @@ function SummaryItem({
 }) {
   return (
     <div>
-      <p className="text-xs font-semibold uppercase tracking-wide text-indigo-400">
+      <p className="text-xs font-bold uppercase tracking-wide text-teal-600">
         {label}
       </p>
-      <p className="mt-1 truncate text-sm font-bold text-indigo-950">
+      <p className="mt-1 truncate text-sm font-black text-teal-950">
         {value}
       </p>
     </div>
@@ -681,7 +681,7 @@ function SummaryItem({
 }
 
 const inputClass =
-  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 disabled:cursor-not-allowed disabled:bg-slate-100";
+  "w-full rounded-lg border border-slate-200 bg-white px-3.5 py-3 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 hover:border-slate-300 focus:border-teal-600 focus:ring-4 focus:ring-teal-500/10 disabled:cursor-not-allowed disabled:bg-slate-100";
 
 function toLocalInputValue(date: Date): string {
   const shifted = new Date(

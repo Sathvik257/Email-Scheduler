@@ -1,9 +1,4 @@
-import {
-  Activity,
-  LogOut,
-  Mail,
-  ShieldCheck,
-} from "lucide-react";
+import { Activity, LogOut, Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import type { User } from "../types";
 import { Button } from "./Button";
@@ -21,22 +16,22 @@ export function Header({
     Boolean(user.avatarUrl) && !avatarFailed;
 
   return (
-    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/95 shadow-sm backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-sm shadow-slate-900/5 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <div className="flex min-w-0 items-center gap-3">
-          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 text-white shadow-lg shadow-indigo-200">
+          <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0f766e] text-white shadow-lg shadow-teal-900/20">
             <Mail className="h-5 w-5" />
 
-            <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-emerald-400" />
+            <span className="absolute -bottom-0.5 -right-0.5 h-3.5 w-3.5 rounded-full border-2 border-white bg-orange-400" />
           </div>
 
           <div className="min-w-0">
             <div className="flex items-center gap-2">
-              <h1 className="truncate text-base font-bold tracking-tight text-slate-950 sm:text-lg">
+              <h1 className="truncate text-base font-black tracking-tight text-slate-950 sm:text-lg">
                 ReachInbox
               </h1>
 
-              <span className="hidden items-center gap-1 rounded-full border border-indigo-100 bg-indigo-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-indigo-600 md:inline-flex">
+              <span className="hidden items-center gap-1 rounded-full border border-teal-100 bg-teal-50 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-teal-700 md:inline-flex">
                 <ShieldCheck className="h-3 w-3" />
                 Scheduler
               </span>
@@ -49,7 +44,7 @@ export function Header({
         </div>
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
-          <div className="hidden items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-3 py-1.5 text-xs font-semibold text-emerald-700 lg:flex">
+          <div className="hidden items-center gap-2 rounded-full border border-teal-100 bg-teal-50 px-3 py-1.5 text-xs font-semibold text-teal-700 lg:flex">
             <Activity className="h-3.5 w-3.5" />
             System online
           </div>
@@ -75,20 +70,20 @@ export function Header({
               <img
                 src={user.avatarUrl ?? ""}
                 alt={`${user.name} profile`}
-                className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-md ring-1 ring-slate-200 sm:h-11 sm:w-11"
+                className="h-10 w-10 rounded-full border-2 border-white object-cover shadow-md shadow-slate-900/10 ring-1 ring-slate-200 sm:h-11 sm:w-11"
                 referrerPolicy="no-referrer"
                 onError={() => setAvatarFailed(true)}
               />
             ) : (
               <div
-                className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-amber-400 to-orange-500 text-sm font-bold text-white shadow-md ring-1 ring-orange-200 sm:h-11 sm:w-11"
+                className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-white bg-gradient-to-br from-orange-400 to-amber-500 text-sm font-bold text-white shadow-md shadow-orange-900/10 ring-1 ring-orange-200 sm:h-11 sm:w-11"
                 aria-label={`${user.name} profile`}
               >
                 {getInitials(user.name)}
               </div>
             )}
 
-            <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-emerald-400" />
+            <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-white bg-teal-400" />
           </div>
 
           <Button
@@ -114,8 +109,8 @@ export function Header({
             </p>
           </div>
 
-          <div className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-emerald-600">
-            <span className="h-2 w-2 rounded-full bg-emerald-400" />
+          <div className="flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-teal-700">
+            <span className="h-2 w-2 rounded-full bg-teal-400" />
             Online
           </div>
         </div>
